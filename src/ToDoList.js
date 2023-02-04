@@ -19,12 +19,25 @@ function ToDoList() {
 		setList([...list, newItem]);
 	}
 
+	function handleOnClickRemoval(deleteIndexID) {
+		const newList = list.filter((item, index) => {
+			return deleteIndexID !== index;
+		});
+		setList(newList);
+	}
+
 	return (
 		<>
 			<ul>
 				{list.map((item, index) => (
 					<li key={index}>
 						<p>{item}</p>
+						<button
+							onClick={() => handleOnClickRemoval(index)}
+							index={index}
+						>
+							Remove Item
+						</button>
 					</li>
 				))}
 			</ul>
